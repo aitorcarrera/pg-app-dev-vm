@@ -1,8 +1,8 @@
 #!/bin/sh -e
 
 # Edit the following to change the name of the database user that will be created:
-APP_DB_USER=myapp
-APP_DB_PASS=dbpass
+APP_DB_USER=moserver
+APP_DB_PASS=moserverpass
 
 # Edit the following to change the name of the database that is created (defaults to the user name)
 APP_DB_NAME=$APP_DB_USER
@@ -84,6 +84,11 @@ CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASS';
 
 -- Create the database:
 CREATE DATABASE $APP_DB_NAME WITH OWNER $APP_DB_USER;
+
+\c APP_DB_NAME
+--- Create Schema
+CREATE SCHEMA $APP_SCHEMA_NAME
+
 EOF
 
 # Tag the provision time:
